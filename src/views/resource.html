@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">   
+    <link rel="stylesheet" href="styles/resource.css">   
+    <link rel="stylesheet" href="styles/responsive.css"/>
+    <title>Resultado da Pesquisa </title>
+</head>
+
+<body>
+    <div id="page-search-results">
+        <header>
+            {%include "partitions/partitionHome.html"%}
+        </header>
+        <main>
+         {% if total > 0 %}
+            <h3><strong>{{total}} pontos</strong> encontrados</h3>
+        <div class="cards">
+            {% for place in places %}
+            <div class="card">
+                <img src="{{place.image }}" alt="{{place.name }}">
+                <h2>{{place.name}}</h2>
+                <h3>{{place.items}}</h3>
+                <p>{{place.city}}, {{place.state}} <br> {{place.address}} <br>{{place.address2}}</p>
+            </div>
+            {% endfor %}
+        </main>
+        {%else%}
+        <h4><strong>Nenhum local encontrado</strong></h4>
+         {% endif %}
+
+    </div>
+</body>
+
+</html>

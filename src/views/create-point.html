@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">   
+    <link rel="stylesheet" href="styles/create-point.css">   
+    <link rel="stylesheet" href="styles/responsive.css"/>
+    <title>e-Coleta - Sua marketplace de coleta de residuos.</title>
+</head>
+
+<body>
+    <div id="page-create-point">
+        {%include "partitions/partitionHome.html"%}
+        <form action="/savepoint" method="POST">
+            <h1>Cadastro do ponto de coleta</h1>
+            <fieldset>
+                <legend><h2>Dados da entidade</h2></legend>
+                <div class="field-group">
+                    <div class="field">
+                            <label for="name">Nome da entidade</label>
+                            <input type="text" name="name" placeholder="Ex: Rocketseat, Amazon,..." required>
+                    </div>
+                    <div class="field">
+                            <label for="name">Imagem da entidade</label>
+                            <input type="url" name="image" placeholder="URL da imagem." required>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <div class="field">
+                        <label for="address">Endereço</label>
+                        <input type="text" name="address" placeholder="Ex: Av. Getulio Vargas, Rua Conceição Castelo..."required>
+                    </div>
+                    <div class="field">
+                        <label for="address2">Numero/Complemento</label>
+                        <input type="text" name="address2" placeholder="Ex:555, apartamento 730,..."required>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <div class="field">
+                        <label for="state">Estado</label>
+                        <select name="state"required>
+                            <option value="">Selecione o Estado</option>
+                        </select><input type="hidden" name="uf">
+                    </div>
+                    <div class="field">
+                        <label for="city">Cidade</label>
+                        <select name="city" disabled required>
+                            <option value="">Selecione a Cidade</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend><h2>Itens de coleta</h2><span>Selecione os itens</span></legend>
+                <div id="itens-grid">
+                    <li data-id="Lâmpadas"><img src="/assets/ico/lampadas.svg" alt="Lampadas"><span>Lampadas</span></li>
+                    <li data-id="Pilhas e Baterias"><img src="/assets/ico/baterias.svg" alt="Pilhas e Baterias"><span>Pilhas e Baterias</span></li>
+                    <li data-id="Papeis e Papelões"><img src="/assets/ico/papeis-papelao.svg" alt="Papeis e Papelão"><span>Papeis e Papelão</span></li>
+                    <li data-id="Residuos Eletronicos"><img src="/assets/ico/eletronicos.svg" alt="Residuos Eletronicos"><span>Residuos Eletronicos</span></li>
+                    <li data-id="Residuos Orgnicos"><img src="/assets/ico/organicos.svg" alt="Orgânicos"><span>Orgânicos</span></li>
+                    <li data-id="Óleos"><img src="/assets/ico/oleo.svg" alt="Óleos"><span>Óleos</span></li>
+                </div>
+                <input type="hidden" name="items">
+            </fieldset>
+            <button type="submit">Cadastrar ponto de coelta</button>
+        </form>
+    </div>
+    <script src="/script/create-point.js"></script>
+</body>
+
+</html>
